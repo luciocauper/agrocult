@@ -103,6 +103,7 @@
             margin: 10px;
             display: inline-block;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer; /* Adiciona cursor de ponteiro */
         }
 
         .card svg {
@@ -217,9 +218,83 @@
             background-color: #999;
         }
 
+        /* Overlay de informações do setor */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .overlay.active {
+            display: flex;
+        }
+
+        .overlay-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay-content h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .overlay-content h3 {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .overlay-content .info-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .overlay-content .info-column {
+            flex: 1;
+        }
+
+        .overlay-content .info-column h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .overlay-content .info-column p {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .overlay-content .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #007BFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
         /* Formulário de pesquisa de histórico */
         .historico-form {
-            max-width: 400px;
+           max-width: 400px;
             margin: 0 auto;
         }
 
@@ -284,7 +359,7 @@
         <!-- Conteúdo para Água -->
         <div id="agua" class="content">
             <h2>Setores de Água</h2>
-            <div class="card">
+            <div class="card" onclick="openOverlay()">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="40" fill="#007BFF" />
                 </svg>
@@ -328,6 +403,32 @@
                 <button type="submit">Cadastrar</button>
                 <button type="button" class="close-button" onclick="closeModal()">Fechar</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Overlay de informações do setor -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h2>Informações</h2>
+            <h3>Reservatório</h3>
+            <div class="info-container">
+                <!-- Coluna da Água -->
+                <div class="info-column">
+                    <h4>Água</h4>
+                    <div class="circle">75%</div>
+                    <p>Volume Total: 5000 L</p>
+                    <p>pH: 7.0</p>
+                </div>
+                <!-- Coluna dos Minerais -->
+                <div class="info-column">
+                    <h4>Minerais</h4>
+                    <p>Cálcio: 120 mg/L</p>
+                    <p>Fósforo: 80 mg/L</p>
+                    <p>Ferro: 5 mg/L</p>
+                    <p>Potássio: 150 mg/L</p>
+                </div>
+            </div>
+            <button class="close-button" onclick="closeOverlay()">Fechar</button>
         </div>
     </div>
 
@@ -375,6 +476,15 @@
             const dataFim = document.getElementById('data-fim').value;
             alert(`Pesquisando histórico de ${dataInicio} até ${dataFim}`);
             // Aqui você pode adicionar a lógica para buscar o histórico
+        }
+
+        // Funções para abrir e fechar o overlay
+        function openOverlay() {
+            document.getElementById('overlay').classList.add('active');
+        }
+
+        function closeOverlay() {
+            document.getElementById('overlay').classList.remove('active');
         }
     </script>
 </body>
