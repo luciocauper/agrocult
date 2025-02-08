@@ -4,119 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Agrosense</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://img.freepik.com/fotos-gratis/lindo-jardim-de-morango-e-nascer-do-sol-em-doi-ang-khang-chiang-mai-tailandia_335224-761.jpg?t=st=1738954762~exp=1738958362~hmac=fbc9b8b3e96b2ba58d8ba8448d93136c3591c25b8d28196195ae44ce0cc6eec4&w=1060');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
+    <link rel="stylesheet" href="cadastro.css">
 
-        /* Overlay para escurecer o fundo */
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Escurece a imagem de fundo */
-            z-index: 1;
-        }
-
-        /* Formulário de cadastro */
-        .cadastro-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .cadastro-form h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .cadastro-form label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-size: 14px;
-        }
-
-        .cadastro-form input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        /* Estilo para o ícone de interrogação e tooltip */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            margin-left: 5px;
-            cursor: pointer;
-        }
-
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Posiciona o tooltip acima do ícone */
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Botão de confirmar */
-        .cadastro-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .cadastro-form button:hover {
-            background-color: #218838;
-        }
-    </style>
 </head>
 <body>
     <div class="cadastro-form">
-        <h1>Agrosense</h1>
+        <img src="logoagrosense.png" alt="logo Agrosense">
         <form>
             <label for="nome">Nome completo:</label>
             <input type="text" id="nome" name="nome" required>
@@ -136,6 +29,8 @@
             <input type="password" id="confirmar-senha" name="confirmar-senha" required>
 
             <button type="submit">Confirmar</button>
+            <button type="button" onclick="window.location.href='login.html'">Voltar ao Login</button> <!-- Botão para voltar ao login -->
+        
         </form>
     </div>
 </body>
