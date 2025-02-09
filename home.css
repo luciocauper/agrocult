@@ -7,7 +7,6 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Aba lateral fixa */
 .sidebar {
     width: 250px;
     background-color: white;
@@ -21,13 +20,16 @@ body {
     height: 100vh;
 }
 
+.sidebar img{
+    width: 50%;
+}
+
 .sidebar h1 {
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Barra separadora */
 .separator {
     width: 100%;
     border-top: 1px solid #e0e0e0;
@@ -46,17 +48,22 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 5px;
+    display: flex; 
+    align-items: center; 
 }
 
-/* Efeito ao passar o mouse nos botões */
+.sidebar button i {
+    margin-right: 10px; 
+}
+
+
 .sidebar button:hover {
     background-color: rgba(40, 167, 69, 0.1);
     color: #28a745;
 }
 
-/* Estilo específico para o botão "Sair" */
 .sidebar .sair-button {
-    margin-top: 150%; /* Botão "Sair" movido para baixo */
+    margin-top: auto; 
 }
 
 .sidebar .sair-button:hover {
@@ -64,12 +71,12 @@ body {
     color: #ff0000;
 }
 
-/* Conteúdo principal com rolagem */
+
 .main-content {
     flex: 1;
     padding: 20px;
     background-color: white;
-    margin-left: 300px; /* Ajuste na margem esquerda */
+    margin-left: 300px; 
     overflow-y: auto;
     height: 100vh;
 }
@@ -80,12 +87,11 @@ body {
     color: #333;
 }
 
-/* Exibe o conteúdo quando o botão correspondente é clicado */
+
 .main-content .content.active {
     display: block;
 }
 
-/* Cards de setores */
 .card {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
@@ -96,8 +102,12 @@ body {
     margin: 10px;
     display: inline-block;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer; 
 }
 
+.card:hover {
+    background-color: #f0efef; 
+} 
 .card svg {
     width: 80px;
     height: 80px;
@@ -115,7 +125,7 @@ body {
     color: #777;
 }
 
-/* Botão flutuante */
+
 .floating-button {
     position: fixed;
     bottom: 20px;
@@ -136,7 +146,7 @@ body {
     background-color: #218838;
 }
 
-/* Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -177,15 +187,43 @@ body {
 }
 
 .modal-content input {
-    width: auto; /* Largura ajustada para auto */
+    width: 95%; 
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
-.modal-content button {
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; 
+}
+
+.modal-content .close-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal-content .close-button:hover {
+    color: #b31e1e;
+}
+
+.modal-content .submit {
     width: 100%;
     padding: 10px;
     background-color: #28a745;
@@ -197,22 +235,153 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.modal-content button:hover {
+.modal-content .submit:hover {
     background-color: #218838;
 }
 
-.modal-content .close-button {
-    background-color: #ccc;
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: flex;
+}
+
+.overlay-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; 
+
+}
+
+.overlay-content .close-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.overlay-content .close-button:hover {
+    color: #b31e1e;
+}
+
+.overlay-content h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.overlay-content h3 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.overlay-content .info-container {
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: center; 
+    gap: 20px;
+}
+
+.overlay-content .info-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.progress-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: conic-gradient(blue 75%, lightgray 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    position: relative;
+}
+
+.progress-circle::before {
+    content: "";
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    background: white;
+    border-radius: 50%;
+}
+
+.progress-text {
+    position: absolute;
+}
+
+.small-cards {
+    display: flex;
+    gap: 10px;
     margin-top: 10px;
+    justify-content: center;
 }
 
-.modal-content .close-button:hover {
-    background-color: #999;
+.small-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Formulário de pesquisa de histórico */
+.minerals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.mineral-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:20px;
+}
+
+
 .historico-form {
-    max-width: 400px;
+   max-width: 400px;
     margin: 0 auto;
 }
 
@@ -224,7 +393,7 @@ body {
 }
 
 .historico-form input {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -247,3 +416,130 @@ body {
 .historico-form button:hover {
     background-color: #218838;
 }
+
+.hamburger-menu {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001; 
+}
+.hamburger-menu:hover{
+    background-color: #d8d8d8;
+}
+
+.sidebar.active {
+    display: flex; 
+}
+
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+    .sidebar {
+        display: none;
+    }
+    .sidebar.active {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 1000;
+        background-color: white;
+        flex-direction: column;
+        width: 250px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .main-content {
+        margin-left: 0;
+    }
+
+    .modal-content {
+        max-width: 300px;
+    }
+
+    .overlay {
+        width: 90%;
+        height: auto;
+        top: 10%;
+        left: 5%;
+    }
+
+    .overlay-content {
+        width: 90%;
+        max-width: 350px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .overlay-content .progress-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 14px;
+    }
+
+    .overlay-content .progress-circle::before {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background: white;
+        border-radius: 50%;
+    }
+
+    .small-card {
+        width: 40px;
+        height: 40px;
+        font-size: 8px;
+        padding: 3px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        word-spacing: -1px;
+    }
+
+    .overlay-content .mineral-item {
+        width: 60px;
+        height: 60px;
+        font-size: 10px;
+        word-spacing: -1px;
+        margin-bottom: 5px;
+    }
+
+    .overlay-content .minerals-grid {
+        gap: 2px;
+        grid-row-gap: 2px;
+    }
+
+    .overlay-content .mineral-item p {
+        margin: 0;
+        font-size: 8px;
+        word-spacing: -1px;
+    }
+
+    .overlay-content h2 {
+        font-size: 16px;
+        word-spacing: -1px;
+    }
+
+    .overlay-content h3 {
+        font-size: 14px;
+        word-spacing: -1px;
+    }
+
+    .overlay-content .info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+

@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Agrosense</title>
     <link rel="stylesheet" href="home.css">
+    <script src="home.js">defer> </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 
 </head>
 <body>
     <!-- Aba lateral -->
     <div class="sidebar">
-        <h1>Agrosense</h1>
+        <img src="logoagrosense.png" alt="logo Agrosense">
         <div class="separator"></div>
-        <button onclick="showContent('clima')">Clima e Solo</button>
-        <button onclick="showContent('agua')">Água</button>
-        <button onclick="showContent('historico')">Histórico</button>
-        <button class="sair-button" onclick="sair()">Sair</button>
+        <button onclick="showContent('clima')">
+            <i class="material-icons">cloud</i> Clima e Solo
+        </button>
+        <button onclick="showContent('agua')">
+            <i class="material-icons">opacity</i> Água
+        </button>
+        <button onclick="showContent('historico')">
+            <i class="material-icons">history</i> Histórico
+        </button>
+        <button class="sair-button" onclick="sair()">
+            <i class="material-icons">exit_to_app</i> Sair
+        </button>
+    </div>
+
+    <!-- Ícone do menu hambúrguer para dispositivos móveis -->
+    <div class="hamburger-menu">
+        <i class="material-icons" onclick="toggleMenu()">menu</i>
     </div>
 
     <!-- Conteúdo principal -->
@@ -35,10 +50,8 @@
         <!-- Conteúdo para Água -->
         <div id="agua" class="content">
             <h2>Setores de Água</h2>
-            <div class="card">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="40" fill="#007BFF" />
-                </svg>
+            <div class="card" onclick="openOverlay()">
+                <img src="reservatório.png" alt="reservatorio">
                 <h3>Reservatório</h3>
                 <p>Volume: 5000 L</p>
             </div>
@@ -65,6 +78,7 @@
     <!-- Modal de cadastro de setor -->
     <div class="modal" id="modal">
         <div class="modal-content">
+            <button type="button" class="close-button" onclick="closeModal()">X</button>
             <h2>Cadastrar Novo Setor</h2>
             <form id="cadastroForm">
                 <label for="nome-setor">Nome do Setor:</label>
@@ -76,57 +90,64 @@
                 <label for="profundidade">Profundidade do Poço (m):</label>
                 <input type="number" id="profundidade" name="profundidade" required>
 
-                <button type="submit">Cadastrar</button>
-                <button type="button" class="close-button" onclick="closeModal()">Fechar</button>
+                <button type="submit" class="submit">Cadastrar</button>
+                
             </form>
         </div>
     </div>
 
-    <script>
-        // Função para exibir o conteúdo correspondente ao botão clicado
-        function showContent(contentId) {
-            // Oculta todos os conteúdos
-            document.querySelectorAll('.content').forEach(content => {
-                content.classList.remove('active');
-            });
+ <!-- Overlay de informações do setor -->
+<div class="overlay" id="overlay">
+    <div class="overlay-content">
+        <button type="button" class="close-button" onclick="closeOverlay()">X</button>
+        <h2>Informações</h2> 
+        <h3>Reservatório</h3>
+        <div class="info-container">
+            <!-- Coluna da Água -->
+            <div class="info-column">
+                <h4>Água</h4>
+                <div class="progress-circle">
+                    <div class="progress-text">75%</div>
+                </div>
+                <div class="small-cards">
+                    <div class="small-card">
+                        <h5>Volume</h5>
+                        <p>5000 L</p>
+                    </div>
+                    <div class="small-card">
+                        <h5>pH</h5>
+                        <p>7.0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Coluna dos Minerais em uma grade 2x2 -->
+            <div class="info-column">
+                <h4>Minerais</h4>
+                <div class="minerals-grid">
+                    <div class="mineral-item">
+                        <h5>Cálcio</h5>
+                        <p>120 mg/L</p>
+                    </div>
+                    <div class="mineral-item">
+                        <h5>Fósforo</h5>
+                        <p>80 mg/L</p>
+                    </div>
+                    <div class="mineral-item">
+                        <h5>Ferro</h5>
+                        <p>5 mg/L</p>
+                    </div>
+                    <div class="mineral-item">
+                        <h5>Potássio</h5>
+                        <p>150 mg/L</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
 
-            // Exibe o conteúdo correspondente
-            const content = document.getElementById(contentId);
-            if (content) {
-                content.classList.add('active');
-            }
-        }
 
-        // Função para o botão "Sair"
-        function sair() {
-            alert("Você saiu da aplicação.");
-            // Aqui você pode redirecionar para a tela de login ou fazer logout
-        }
-
-        // Funções para abrir e fechar o modal
-        function openModal() {
-            document.getElementById('modal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-        }
-
-        // Função para enviar o formulário de cadastro
-        document.getElementById('cadastroForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Impede o envio do formulário
-            alert("Setor cadastrado com sucesso!");
-            closeModal(); // Fecha o modal após o cadastro
-        });
-
-        // Função para pesquisar histórico
-        function pesquisarHistorico(event) {
-            event.preventDefault(); // Impede o envio do formulário
-            const dataInicio = document.getElementById('data-inicio').value;
-            const dataFim = document.getElementById('data-fim').value;
-            alert(`Pesquisando histórico de ${dataInicio} até ${dataFim}`);
-            // Aqui você pode adicionar a lógica para buscar o histórico
-        }
-    </script>
 </body>
 </html>
