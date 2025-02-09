@@ -239,6 +239,7 @@ body {
     background-color: #218838;
 }
 
+/* Define o overlay */
 .overlay {
     display: none;
     position: fixed;
@@ -252,10 +253,12 @@ body {
     z-index: 1000;
 }
 
+/* Ativa o overlay */
 .overlay.active {
     display: flex;
-}
+  }
 
+/* Define o conteúdo do overlay */
 .overlay-content {
     background-color: white;
     padding: 30px;
@@ -263,10 +266,11 @@ body {
     width: 90%;
     max-width: 600px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative; 
-
+    position: relative;
+    z-index: 1001; /* Garante que o conteúdo tenha um índice z maior que o overlay */
 }
 
+/* Botão de fechar */
 .overlay-content .close-button {
     background: none;
     border: none;

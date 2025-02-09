@@ -4,9 +4,26 @@ function toggleMenu() {
     sidebar.classList.toggle('active');
 }
 
+// Fecha o menu ao clicar em um item do menu
+const menuItems = document.querySelectorAll('.sidebar .menu-item'); // Substitua '.sidebar .menu-item' pelo seletor dos itens do seu menu
+menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        toggleMenu();
+    });
+});
+
+// Fecha a sidebar ao clicar fora dela e do menu hambúrguer
+window.addEventListener('click', function(event) {
+    var sidebar = document.querySelector('.sidebar');
+    var hamburgerMenu = document.querySelector('.hamburger-menu');
+
+    if (sidebar && hamburgerMenu && !sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
+        sidebar.classList.remove('active');
+    }
+});
+
 // Função para exibir o conteúdo correspondente ao botão clicado
 function showContent(contentId) {
-
     document.querySelectorAll('.content').forEach(content => {
         content.classList.remove('active');
     });
@@ -40,12 +57,12 @@ function openModal() {
     document.getElementById('modal').classList.add('active');
 }
 
-// Adiciona um evento de clique na janela para fechar o modal ao clicar fora dele
+// Fecha o modal ao clicar fora dele
 window.addEventListener('click', function(event) {
     var modal = document.getElementById('modal');
     var modalContent = document.querySelector('.modal-content');
-    // Verifica se o clique ocorreu fora do conteúdo do modal
-    if (modal && modalContent && event.target === modal) {
+
+    if (modal && modalContent && !modalContent.contains(event.target) && modal.contains(event.target)) {
         closeModal();
     }
 });
@@ -63,7 +80,6 @@ function pesquisarHistorico(event) {
     const dataInicio = document.getElementById('data-inicio').value;
     const dataFim = document.getElementById('data-fim').value;
     alert(`Pesquisando histórico de ${dataInicio} até ${dataFim}`);
-
 }
 
 // Função para fechar o overlay
@@ -83,15 +99,5 @@ window.addEventListener('click', function(event) {
     // Verifica se o clique ocorreu fora do conteúdo do overlay
     if (overlay && overlayContent && event.target === overlay) {
         closeOverlay();
-    }
-});
-
-// Adiciona um evento de clique na janela para a sidebar
-window.addEventListener('click', function(event) {
-    var sidebar = document.querySelector('.sidebar');
-    var hamburgerMenu = document.querySelector('.hamburger-menu');
-    // Verifica se o clique ocorreu fora da sidebar e do menu hambúrguer
-    if (!sidebar.contains(event.target) && !hamburgerMenu.contains(event.target)) {
-        sidebar.classList.remove('active');
     }
 });
