@@ -342,11 +342,44 @@ body {
     justify-content: center;
 }
 
-.modal-content .close-button:hover {
-    background-color: #999;
+.small-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Formulário de pesquisa de histórico */
+.minerals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.mineral-item {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:20px;
+}
+
+
 .historico-form {
    max-width: 400px;
     margin: 0 auto;
