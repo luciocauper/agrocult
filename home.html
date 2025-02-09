@@ -50,8 +50,10 @@
         <!-- Conteúdo para Água -->
         <div id="agua" class="content">
             <h2>Setores de Água</h2>
-            <div class="card" onclick="openOverlay()">
-                <img src="reservatório.png" alt="reservatorio">
+            <div class="card">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="#007BFF" />
+                </svg>
                 <h3>Reservatório</h3>
                 <p>Volume: 5000 L</p>
             </div>
@@ -93,6 +95,32 @@
                 <button type="submit" class="submit">Cadastrar</button>
                 
             </form>
+        </div>
+    </div>
+
+    <!-- Overlay de informações do setor -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h2>Informações</h2>
+            <h3>Reservatório</h3>
+            <div class="info-container">
+                <!-- Coluna da Água -->
+                <div class="info-column">
+                    <h4>Água</h4>
+                    <div class="circle">75%</div>
+                    <p>Volume Total: 5000 L</p>
+                    <p>pH: 7.0</p>
+                </div>
+                <!-- Coluna dos Minerais -->
+                <div class="info-column">
+                    <h4>Minerais</h4>
+                    <p>Cálcio: 120 mg/L</p>
+                    <p>Fósforo: 80 mg/L</p>
+                    <p>Ferro: 5 mg/L</p>
+                    <p>Potássio: 150 mg/L</p>
+                </div>
+            </div>
+            <button class="close-button" onclick="closeOverlay()">Fechar</button>
         </div>
     </div>
 
