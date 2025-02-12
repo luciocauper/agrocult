@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Agrosense</title>
     <link rel="stylesheet" href="home.css">
-    <script src="home.js">defer> </script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <script src="home.js">defer > </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
+
 <body>
     <!-- Aba lateral -->
     <div class="sidebar">
@@ -68,6 +70,9 @@
                 <input type="date" id="data-fim" name="data-fim" required>
 
                 <button type="submit">Pesquisar</button>
+                <!-- Resultados da pesquisa -->
+                <div id="resultado-pesquisa" class="resultado-pesquisa"></div>
+
             </form>
         </div>
     </div>
@@ -91,62 +96,63 @@
                 <input type="number" id="profundidade" name="profundidade" required>
 
                 <button type="submit" class="submit">Cadastrar</button>
-                
+
             </form>
         </div>
     </div>
 
- <!-- Overlay de informações do setor -->
-<div class="overlay" id="overlay">
-    <div class="overlay-content">
-        <button type="button" class="close-button" onclick="closeOverlay()">X</button>
-        <h2>Informações</h2>
-        <h3>Reservatório</h3>
-        <div class="info-container">
-            <!-- Coluna da Água -->
-            <div class="info-column">
-                <h4>Água</h4>
-                <div class="progress-circle">
-                    <div class="progress-text">75%</div>
+    <!-- Overlay de informações do setor -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <button type="button" class="close-button" onclick="closeOverlay()">X</button>
+            <h2>Informações</h2>
+            <h3>Reservatório</h3>
+            <div class="info-container">
+                <!-- Coluna da Água -->
+                <div class="info-column">
+                    <h4>Água</h4>
+                    <div class="progress-circle">
+                        <div class="progress-text">75%</div>
+                    </div>
+                    <div class="small-cards">
+                        <div class="small-card">
+                            <h5>Volume</h5>
+                            <p>5000 L</p>
+                        </div>
+                        <div class="small-card">
+                            <h5>pH</h5>
+                            <p>7.0</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="small-cards">
-                    <div class="small-card">
-                        <h5>Volume</h5>
-                        <p>5000 L</p>
-                    </div>
-                    <div class="small-card">
-                        <h5>pH</h5>
-                        <p>7.0</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Coluna dos Minerais em uma grade 2x2 -->
-            <div class="info-column">
-                <h4>Minerais</h4>
-                <div class="minerals-grid">
-                    <div class="mineral-item">
-                        <h5>Cálcio</h5>
-                        <p>120 mg/L</p>
-                    </div>
-                    <div class="mineral-item">
-                        <h5>Fósforo</h5>
-                        <p>80 mg/L</p>
-                    </div>
-                    <div class="mineral-item">
-                        <h5>Ferro</h5>
-                        <p>5 mg/L</p>
-                    </div>
-                    <div class="mineral-item">
-                        <h5>Potássio</h5>
-                        <p>150 mg/L</p>
+                <!-- Coluna dos Minerais em uma grade 2x2 -->
+                <div class="info-column">
+                    <h4>Minerais</h4>
+                    <div class="minerals-grid">
+                        <div class="mineral-item">
+                            <h5>Cálcio</h5>
+                            <p>120 mg/L</p>
+                        </div>
+                        <div class="mineral-item">
+                            <h5>Fósforo</h5>
+                            <p>80 mg/L</p>
+                        </div>
+                        <div class="mineral-item">
+                            <h5>Ferro</h5>
+                            <p>5 mg/L</p>
+                        </div>
+                        <div class="mineral-item">
+                            <h5>Potássio</h5>
+                            <p>150 mg/L</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 </body>
+
 </html>

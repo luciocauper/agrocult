@@ -92,6 +92,17 @@ function openOverlay() {
     document.getElementById('overlay').classList.add('active');
 }
 
+function pesquisarHistorico(event) {
+    event.preventDefault(); 
+    const dataInicio = document.getElementById('data-inicio').value;
+    const dataFim = document.getElementById('data-fim').value;
+
+    const resultadoDiv = document.getElementById('resultado-pesquisa');
+    resultadoDiv.innerHTML = `<h3>Resultados da Pesquisa</h3>
+                              <p>Exibindo dados de ${dataInicio} até ${dataFim}</p>`;
+    resultadoDiv.style.display = 'block';
+}
+
 // Adiciona um evento de clique na janela para fechar o overlay ao clicar fora dele
 window.addEventListener('click', function(event) {
     var overlay = document.getElementById('overlay');
